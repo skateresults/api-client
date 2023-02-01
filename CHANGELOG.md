@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/skateresults/api-client/compare/v1.0.0...v1.0.1) (2023-02-01)
+
+
+### Bug Fixes
+
+* List.items is not readonly ([5932044](https://github.com/skateresults/api-client/commit/59320449fe7e3bf7d43f7127b4f2d49dbf986451))
+
 # 1.0.0 (2023-02-01)
 
 
