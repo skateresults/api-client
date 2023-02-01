@@ -1,4 +1,4 @@
 export interface List<T> {
-  items: T;
+  items: T[];
   total: number;
 }
