@@ -58,98 +58,98 @@ export type webhooks = Record<string, never>;
 
 export interface components {
   schemas: {
-    readonly Event: {
-      readonly id: string;
-      readonly public: boolean;
-      readonly name: string;
+    Event: {
+      id: string;
+      public: boolean;
+      name: string;
       /** Format: date */
-      readonly dateBegin: string;
+      dateBegin: string;
       /** Format: date */
-      readonly dateEnd: string;
+      dateEnd: string;
     };
-    readonly Events: {
-      readonly items: readonly components["schemas"]["Event"][];
-      readonly total: number;
+    Events: {
+      items: components["schemas"]["Event"][];
+      total: number;
     };
-    readonly AgeGroup: {
-      readonly id: string;
-      readonly name: string;
+    AgeGroup: {
+      id: string;
+      name: string;
       /** @enum {string|null} */
-      readonly gender: "male" | "female" | null;
-      readonly competitions: readonly components["schemas"]["Competition"][];
-      readonly event: string;
+      gender: "male" | "female" | null;
+      competitions: components["schemas"]["Competition"][];
+      event: string;
     };
-    readonly AgeGroups: {
-      readonly items: readonly components["schemas"]["AgeGroup"][];
-      readonly total: number;
+    AgeGroups: {
+      items: components["schemas"]["AgeGroup"][];
+      total: number;
     };
-    readonly Athlete: {
-      readonly id: string;
-      readonly bib?: number;
+    Athlete: {
+      id: string;
+      bib?: number;
       /** @description Omitted, if athlete didn't sign the privacy policy */
-      readonly lastName?: string;
+      lastName?: string;
       /** @description Omitted, if athlete didn't sign the privacy policy */
-      readonly firstName?: string;
-      readonly club?: string;
-      readonly team?: string;
-      readonly nation?: string;
-      readonly overallResult: {
-        readonly rank?: number;
+      firstName?: string;
+      club?: string;
+      team?: string;
+      nation?: string;
+      overallResult: {
+        rank?: number;
       };
-      readonly competitionResults: readonly {
-        readonly competition: string;
-        readonly rank?: number;
+      competitionResults: {
+        competition: string;
+        rank?: number;
       }[];
-      readonly event: string;
-      readonly ageGroup?: string;
+      event: string;
+      ageGroup?: string;
     };
-    readonly Athletes: {
-      readonly items: readonly components["schemas"]["Athlete"][];
-      readonly total: number;
+    Athletes: {
+      items: components["schemas"]["Athlete"][];
+      total: number;
     };
-    readonly Competition: {
-      readonly id: string;
-      readonly name: string;
-      readonly rounds: readonly components["schemas"]["Round"][];
-      readonly ageGroup: string;
-      readonly event: string;
+    Competition: {
+      id: string;
+      name: string;
+      rounds: components["schemas"]["Round"][];
+      ageGroup: string;
+      event: string;
     };
-    readonly Competitions: {
-      readonly items: readonly components["schemas"]["Competition"][];
-      readonly total: number;
+    Competitions: {
+      items: components["schemas"]["Competition"][];
+      total: number;
     };
-    readonly Round: {
-      readonly id: string;
-      readonly name: string;
-      readonly seeded: boolean;
-      readonly races: readonly components["schemas"]["Race"][];
+    Round: {
+      id: string;
+      name: string;
+      seeded: boolean;
+      races: components["schemas"]["Race"][];
     };
-    readonly Rounds: {
-      readonly items: readonly components["schemas"]["Round"][];
-      readonly total: number;
+    Rounds: {
+      items: components["schemas"]["Round"][];
+      total: number;
     };
-    readonly Race: {
-      readonly id: string;
-      readonly done: boolean;
-      readonly seeded: boolean;
+    Race: {
+      id: string;
+      done: boolean;
+      seeded: boolean;
     };
-    readonly Races: {
-      readonly items: readonly components["schemas"]["Race"][];
-      readonly total: number;
+    Races: {
+      items: components["schemas"]["Race"][];
+      total: number;
     };
-    readonly FullRace: {
-      readonly athletes: readonly components["schemas"]["RaceAthlete"][];
+    FullRace: {
+      athletes: components["schemas"]["RaceAthlete"][];
     } & components["schemas"]["Race"];
-    readonly RaceAthlete: {
+    RaceAthlete: {
       /** @description Start position of the athlete */
-      readonly startPos?: number;
+      startPos?: number;
       /** @description Final rank of the athlete */
-      readonly rank?: number;
-      readonly athlete: components["schemas"]["Athlete"];
+      rank?: number;
+      athlete: components["schemas"]["Athlete"];
     };
-    readonly Error: {
-      readonly statusCode: number;
-      readonly message: string;
+    Error: {
+      statusCode: number;
+      message: string;
     };
   };
   responses: never;
@@ -168,7 +168,7 @@ export interface operations {
       /** @description An array of events */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Events"];
+          "application/json": components["schemas"]["Events"];
         };
       };
     };
@@ -177,7 +177,7 @@ export interface operations {
     /** Info for a specific event */
     parameters: {
       /** @description ID of the event to be fetched */
-      readonly path: {
+      path: {
         eventId: string;
       };
     };
@@ -185,13 +185,13 @@ export interface operations {
       /** @description Event object */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Event"];
+          "application/json": components["schemas"]["Event"];
         };
       };
       /** @description Event not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
@@ -200,7 +200,7 @@ export interface operations {
     /** List all age groups of an event */
     parameters: {
       /** @description ID of the event */
-      readonly path: {
+      path: {
         eventId: string;
       };
     };
@@ -208,13 +208,13 @@ export interface operations {
       /** @description An array of age groups */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["AgeGroups"];
+          "application/json": components["schemas"]["AgeGroups"];
         };
       };
       /** @description Event not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
@@ -224,7 +224,7 @@ export interface operations {
     parameters: {
       /** @description ID of the event */
       /** @description ID of the athlete to be fetched */
-      readonly path: {
+      path: {
         eventId: string;
         athleteId: string;
       };
@@ -233,13 +233,13 @@ export interface operations {
       /** @description athlete object */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Athlete"];
+          "application/json": components["schemas"]["Athlete"];
         };
       };
       /** @description Athlete not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
@@ -249,7 +249,7 @@ export interface operations {
     parameters: {
       /** @description ID of the event */
       /** @description ID of the age group */
-      readonly path: {
+      path: {
         eventId: string;
         ageGroupId: string;
       };
@@ -258,13 +258,13 @@ export interface operations {
       /** @description An array of competitions */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Competitions"];
+          "application/json": components["schemas"]["Competitions"];
         };
       };
       /** @description Age group or event not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
@@ -275,7 +275,7 @@ export interface operations {
       /** @description ID of the event */
       /** @description ID of the age group */
       /** @description ID of the competition */
-      readonly path: {
+      path: {
         eventId: string;
         ageGroupId: string;
         competitionId: string;
@@ -285,13 +285,13 @@ export interface operations {
       /** @description Competition object */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Competition"];
+          "application/json": components["schemas"]["Competition"];
         };
       };
       /** @description Competition, age group, or event not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
@@ -302,7 +302,7 @@ export interface operations {
       /** @description ID of the event */
       /** @description ID of the age group */
       /** @description ID of the competition */
-      readonly path: {
+      path: {
         eventId: string;
         ageGroupId: string;
         competitionId: string;
@@ -312,13 +312,13 @@ export interface operations {
       /** @description An array of rounds */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Round"];
+          "application/json": components["schemas"]["Round"];
         };
       };
       /** @description Competition, age group or event not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
@@ -330,7 +330,7 @@ export interface operations {
       /** @description ID of the age group */
       /** @description ID of the competition */
       /** @description ID of the round */
-      readonly path: {
+      path: {
         eventId: string;
         ageGroupId: string;
         competitionId: string;
@@ -341,13 +341,13 @@ export interface operations {
       /** @description Round object */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Round"];
+          "application/json": components["schemas"]["Round"];
         };
       };
       /** @description Round, competition, age group, or event not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
@@ -359,7 +359,7 @@ export interface operations {
       /** @description ID of the age group */
       /** @description ID of the competition */
       /** @description ID of the round */
-      readonly path: {
+      path: {
         eventId: string;
         ageGroupId: string;
         competitionId: string;
@@ -370,13 +370,13 @@ export interface operations {
       /** @description An array of races */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Races"];
+          "application/json": components["schemas"]["Races"];
         };
       };
       /** @description Round. competition, age group or event not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
@@ -389,7 +389,7 @@ export interface operations {
       /** @description ID of the competition */
       /** @description ID of the round */
       /** @description ID of the race */
-      readonly path: {
+      path: {
         eventId: string;
         ageGroupId: string;
         competitionId: string;
@@ -401,13 +401,13 @@ export interface operations {
       /** @description Race object */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Race"];
+          "application/json": components["schemas"]["Race"];
         };
       };
       /** @description Race, round, competition, age group, or event not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
@@ -416,7 +416,7 @@ export interface operations {
     /** List all athletes of an event */
     parameters: {
       /** @description ID of the event */
-      readonly path: {
+      path: {
         eventId: string;
       };
     };
@@ -424,13 +424,13 @@ export interface operations {
       /** @description An array of athletes */
       200: {
         content: {
-          readonly "application/json": components["schemas"]["Athletes"];
+          "application/json": components["schemas"]["Athletes"];
         };
       };
       /** @description Event not found */
       404: {
         content: {
-          readonly "application/json": components["schemas"]["Error"];
+          "application/json": components["schemas"]["Error"];
         };
       };
     };
