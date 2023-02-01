@@ -4,6 +4,7 @@ import { createAthleteAPI } from "./athlete.js";
 import { createCompetitionAPI } from "./competition.js";
 import { createEventAPI } from "./event.js";
 import { OptionsWithDefaults } from "./internal-types.js";
+import { createRaceAPI } from "./race.js";
 import { createRoundAPI } from "./round.js";
 
 export function createClient(options: Options = {}) {
@@ -17,6 +18,7 @@ export function createClient(options: Options = {}) {
     athlete: createAthleteAPI(optionsWithDefaults),
     competition: createCompetitionAPI(optionsWithDefaults),
     event: createEventAPI(optionsWithDefaults),
+    races: createRaceAPI(optionsWithDefaults),
     round: createRoundAPI(optionsWithDefaults),
   };
 }
