@@ -1,0 +1,45 @@
+name: Build & Publish
+
+on:
+  - push
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-20.04
+
+    concurrency:
+      group: ${{ github.ref }}-${{ github.event_name }}
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+      - name: Setup node
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> .npmrc
+          pnpm install
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Lint
+        run: pnpm run lint
+      # - name: Test
+      #   run: pnpm run test
+      - name: Build
+        run: pnpm run build
+
+      - name: Semantic Release
+        run: pnpm run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}

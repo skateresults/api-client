@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "declaration": true,
+    "module": "Node16"
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.spec.ts"]
+}
