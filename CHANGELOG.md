@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/skateresults/api-client/compare/v1.0.1...v1.0.2) (2023-02-01)
+
+
+### Bug Fixes
+
+* List.items is an array ([9f9c376](https://github.com/skateresults/api-client/commit/9f9c376bd4d4bcb956959c543e2fca6d45fab448))
+
 ## [1.0.1](https://github.com/skateresults/api-client/compare/v1.0.0...v1.0.1) (2023-02-01)
 
 
