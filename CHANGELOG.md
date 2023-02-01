@@ -1,0 +1,17 @@
+# 1.0.0 (2023-02-01)
+
+
+### Bug Fixes
+
+* adjust import path ([0f00914](https://github.com/skateresults/api-client/commit/0f009142e78ff7c8daf586f77c97328c027f8e0a))
+
+
+### Features
+
+* add types ([693a77f](https://github.com/skateresults/api-client/commit/693a77f31e63fe733bed15df5f294878b605b891))
+* age group api ([1370f4b](https://github.com/skateresults/api-client/commit/1370f4b47c09a64af8b36161063314ba42238c3d))
+* athlete api ([f44cf1a](https://github.com/skateresults/api-client/commit/f44cf1a322ad2160a19641379c8c40e6b6861e61))
+* competition api ([63e6413](https://github.com/skateresults/api-client/commit/63e64139afa8b87bf4cc01e28e05c6c21b7e8615))
+* event api ([07dfff1](https://github.com/skateresults/api-client/commit/07dfff19a7aa3d434b6636cc7221f7c8744b66b9))
+* race api ([6af61a8](https://github.com/skateresults/api-client/commit/6af61a8d8db09e586a1f22d931f5139ebc176051))
+* round api ([6f04e29](https://github.com/skateresults/api-client/commit/6f04e29eb5f5eb0010b52c5efb4261815e71db33))
