@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/skateresults/api-client/compare/v1.0.2...v1.1.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* types are not immutable ([7ed0cdc](https://github.com/skateresults/api-client/commit/7ed0cdcea1dfb4f358d619ba0472f75c26cac8b4))
+
+
+### Features
+
+* add `Client` type ([55904af](https://github.com/skateresults/api-client/commit/55904af3c196660aa0a9f58863d41855b9312923))
+
 ## [1.0.2](https://github.com/skateresults/api-client/compare/v1.0.1...v1.0.2) (2023-02-01)
 
 
