@@ -1,4 +1,4 @@
-export interface APIList<T> {
+export interface List<T> {
   items: ReadonlyArray<T>;
   total: number;
 }
