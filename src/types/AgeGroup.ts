@@ -1,3 +1,3 @@
-import { components } from "../../../api/src/types/schema.js";
+import { components } from "./schema.js";
 
 export type AgeGroup = components["schemas"]["AgeGroup"];
