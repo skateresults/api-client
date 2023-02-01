@@ -7,7 +7,16 @@ import { OptionsWithDefaults } from "./internal-types.js";
 import { createRaceAPI } from "./race.js";
 import { createRoundAPI } from "./round.js";
 
-export function createClient(options: Options = {}) {
+export interface Client {
+  ageGroup: ReturnType<typeof createAgeGroupAPI>;
+  athlete: ReturnType<typeof createAthleteAPI>;
+  event: ReturnType<typeof createEventAPI>;
+  competition: ReturnType<typeof createCompetitionAPI>;
+  races: ReturnType<typeof createRaceAPI>;
+  round: ReturnType<typeof createRoundAPI>;
+}
+
+export function createClient(options: Options = {}): Client {
   const optionsWithDefaults: OptionsWithDefaults = {
     host: "https://api.skateresults.app",
     ...options,
