@@ -1,0 +1,976 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Skate Results"
+  },
+  "servers": [
+    {
+      "description": "Production",
+      "url": "https://api.skateresults.app"
+    },
+    {
+      "description": "Staging",
+      "url": "https://api.dev.skateresults.app"
+    }
+  ],
+  "paths": {
+    "/events": {
+      "get": {
+        "summary": "List all events",
+        "operationId": "getEvents",
+        "tags": ["events"],
+        "responses": {
+          "200": {
+            "description": "An array of events",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Events"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}": {
+      "get": {
+        "summary": "Info for a specific event",
+        "operationId": "getEventById",
+        "tags": ["events"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event to be fetched",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/age-groups": {
+      "get": {
+        "summary": "List all age groups of an event",
+        "operationId": "getAgeGroups",
+        "tags": ["age-groups"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of age groups",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgeGroups"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/age-groups/{ageGroupId}": {
+      "get": {
+        "summary": "Info for a specific age group",
+        "operationId": "getAgeGroupById",
+        "tags": ["age-groups"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ageGroupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the age group to be fetched",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Age group object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgeGroup"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Age group or event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/age-groups/{ageGroupId}/competitions": {
+      "get": {
+        "summary": "List all competitions of an age group",
+        "operationId": "getCompetitions",
+        "tags": ["competitions"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ageGroupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the age group",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of competitions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Competitions"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Age group or event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}": {
+      "get": {
+        "summary": "Info for a specific competition",
+        "operationId": "getCompetitionById",
+        "tags": ["competitions"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ageGroupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the age group",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the competition",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Competition object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Competition"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Competition, age group, or event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds": {
+      "get": {
+        "summary": "List all rounds of a competition",
+        "operationId": "getRounds",
+        "tags": ["rounds"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ageGroupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the age group",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the competition",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of rounds",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Round"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Competition, age group or event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds/{roundId}": {
+      "get": {
+        "summary": "Info for a specific round",
+        "operationId": "getRoundById",
+        "tags": ["rounds"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ageGroupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the age group",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the competition",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roundId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the round",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Round object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Round"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Round, competition, age group, or event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds/{roundId}/races": {
+      "get": {
+        "summary": "List all races of a round",
+        "operationId": "getRaces",
+        "tags": ["races"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ageGroupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the age group",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the competition",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roundId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the round",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of races",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Races"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Round. competition, age group or event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds/{roundId}/races/{raceId}": {
+      "get": {
+        "summary": "Info for a specific race",
+        "operationId": "getRaceById",
+        "tags": ["races"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ageGroupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the age group",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the competition",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roundId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the round",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raceId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the race",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Race object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Race"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Race, round, competition, age group, or event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/athletes": {
+      "get": {
+        "summary": "List all athletes of an event",
+        "operationId": "getAthletes",
+        "tags": ["athletes"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of athletes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Athletes"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/athletes/{athleteId}": {
+      "get": {
+        "summary": "Info for a specific athlete",
+        "operationId": "getAgeGroupById",
+        "tags": ["athletes"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "athleteId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the athlete to be fetched",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "athlete object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Athlete"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Athlete not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Event": {
+        "type": "object",
+        "required": ["id", "public", "name", "dateBegin", "dateEnd"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "dateBegin": {
+            "type": "string",
+            "format": "date"
+          },
+          "dateEnd": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "Events": {
+        "type": "object",
+        "required": ["items", "total"],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Event"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      },
+      "AgeGroup": {
+        "type": "object",
+        "required": ["id", "name", "gender", "event", "competitions"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true,
+            "enum": ["male", "female"]
+          },
+          "competitions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Competition"
+            }
+          },
+          "event": {
+            "type": "string"
+          }
+        }
+      },
+      "AgeGroups": {
+        "type": "object",
+        "required": ["items", "total"],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgeGroup"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      },
+      "Athlete": {
+        "type": "object",
+        "required": ["id", "event", "overallResult", "competitionResults"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "bib": {
+            "type": "number"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Omitted, if athlete didn't sign the privacy policy"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Omitted, if athlete didn't sign the privacy policy"
+          },
+          "club": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          },
+          "nation": {
+            "type": "string"
+          },
+          "overallResult": {
+            "type": "object",
+            "properties": {
+              "rank": {
+                "type": "number"
+              }
+            }
+          },
+          "competitionResults": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["competition"],
+              "properties": {
+                "competition": {
+                  "type": "string"
+                },
+                "rank": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "event": {
+            "type": "string"
+          },
+          "ageGroup": {
+            "type": "string"
+          }
+        }
+      },
+      "Athletes": {
+        "type": "object",
+        "required": ["items", "total"],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Athlete"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      },
+      "Competition": {
+        "type": "object",
+        "required": ["id", "name", "rounds", "ageGroup", "event"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "rounds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Round"
+            }
+          },
+          "ageGroup": {
+            "type": "string"
+          },
+          "event": {
+            "type": "string"
+          }
+        }
+      },
+      "Competitions": {
+        "type": "object",
+        "required": ["items", "total"],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Competition"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      },
+      "Round": {
+        "type": "object",
+        "required": ["id", "name", "done", "seeded", "races"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "seeded": {
+            "type": "boolean"
+          },
+          "races": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Race"
+            }
+          }
+        }
+      },
+      "Rounds": {
+        "type": "object",
+        "required": ["items", "total"],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Round"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      },
+      "Race": {
+        "type": "object",
+        "required": ["id", "done", "seeded"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "done": {
+            "type": "boolean"
+          },
+          "seeded": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Races": {
+        "type": "object",
+        "required": ["items", "total"],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Race"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      },
+      "FullRace": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Race"
+          }
+        ],
+        "required": ["athletes"],
+        "properties": {
+          "athletes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RaceAthlete"
+            }
+          }
+        }
+      },
+      "RaceAthlete": {
+        "type": "object",
+        "required": ["athlete"],
+        "properties": {
+          "startPos": {
+            "type": "number",
+            "description": "Start position of the athlete"
+          },
+          "rank": {
+            "type": "number",
+            "description": "Final rank of the athlete"
+          },
+          "athlete": {
+            "$ref": "#/components/schemas/Athlete"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["statusCode", "message"],
+        "properties": {
+          "statusCode": {
+            "type": "number"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "events",
+      "externalDocs": {
+        "url": "https://docs.skateresults.app/concepts/event"
+      }
+    },
+    {
+      "name": "athletes",
+      "externalDocs": {
+        "url": "https://docs.skateresults.app/concepts/athlete"
+      }
+    },
+    {
+      "name": "age-groups",
+      "externalDocs": {
+        "url": "https://docs.skateresults.app/concepts/age-group"
+      }
+    },
+    {
+      "name": "competitions",
+      "externalDocs": {
+        "url": "https://docs.skateresults.app/concepts/competition"
+      }
+    },
+    {
+      "name": "rounds",
+      "externalDocs": {
+        "url": "https://docs.skateresults.app/concepts/round"
+      }
+    },
+    {
+      "name": "races",
+      "externalDocs": {
+        "url": "https://docs.skateresults.app/concepts/race"
+      }
+    }
+  ]
+}

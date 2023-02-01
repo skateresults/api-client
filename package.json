@@ -14,7 +14,10 @@
     "semantic-release": "semantic-release",
     "prepublishOnly": "pnpm run build",
     "test": "mocha **/*.spec.ts",
-    "lint": "eslint 'src/**' --fix"
+    "lint": "eslint 'src/**' --fix",
+    "update-schema": "pnpm run download-schema && pnpm run generate-types",
+    "download-schema": "curl https://skateresults.github.io/api/openapi.json --output openapi.json",
+    "generate-types": "npx openapi-typescript 'openapi.json' --immutable-types --output src/types/schema.ts"
   },
   "repository": {
     "type": "git",
@@ -40,6 +43,7 @@
     "husky": "8.0.3",
     "mocha": "10.2.0",
     "mocha-each": "2.0.1",
+    "openapi-typescript": "6.1.0",
     "prettier": "2.8.3",
     "semantic-release": "20.1.0",
     "ts-node": "10.9.1",
