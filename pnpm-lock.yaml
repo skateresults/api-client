@@ -34,8 +34,8 @@ devDependencies:
     specifier: 8.0.3
     version: 8.0.3
   openapi-typescript:
-    specifier: 6.2.0
-    version: 6.2.0
+    specifier: 6.2.1
+    version: 6.2.1
   prettier:
     specifier: 2.8.7
     version: 2.8.7
@@ -2110,8 +2110,8 @@ packages:
       mimic-fn: 4.0.0
     dev: true
 
-  /openapi-typescript@6.2.0:
-    resolution: {integrity: sha512-d1HF70HCUnU+g9hgX5X3MJ+BMgwX16fzwD6mkyfNqdxXuOTOSkm+O+aaFqLNX13aFbCylz4m2WiVe4viAShxiQ==}
+  /openapi-typescript@6.2.1:
+    resolution: {integrity: sha512-l0u3fWE7vOCSWl/FxNcB3zu/jDqi/NUCP7MSbffpCZdBwQAbljHbo+CAjPXpf47SAVE+F7ZQKOew+pnXfV1oGA==}
     hasBin: true
     dependencies:
       ansi-colors: 4.1.3
