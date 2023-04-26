@@ -38,7 +38,7 @@
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.3",
     "openapi-typescript": "6.2.1",
-    "prettier": "2.8.7",
+    "prettier": "2.8.8",
     "semantic-release": "21.0.1",
     "typescript": "5.0.4"
   },
