@@ -8,13 +8,13 @@ export function createRoundAPI(options: OptionsWithDefaults) {
       return await ky(
         new URL(
           `/events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}/rounds/${roundId}`,
-          options.host
-        )
+          options.host,
+        ),
       ).json();
     },
     async getAll(eventId: string, ageGroupId: string, competitionId: string): Promise<List<Round>> {
       return await ky(
-        new URL(`/events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}/rounds`, options.host)
+        new URL(`/events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}/rounds`, options.host),
       ).json();
     },
   };

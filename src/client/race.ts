@@ -9,21 +9,21 @@ export function createRaceAPI(options: OptionsWithDefaults) {
       ageGroupId: string,
       competitionId: string,
       roundId: string,
-      raceId: string
+      raceId: string,
     ): Promise<Round> {
       return await ky(
         new URL(
           `/events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}/rounds/${roundId}/races/${raceId}`,
-          options.host
-        )
+          options.host,
+        ),
       ).json();
     },
     async getAll(eventId: string, ageGroupId: string, competitionId: string, roundId: string): Promise<List<Round>> {
       return await ky(
         new URL(
           `/events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}/rounds/${roundId}/races`,
-          options.host
-        )
+          options.host,
+        ),
       ).json();
     },
   };

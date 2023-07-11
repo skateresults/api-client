@@ -7,7 +7,7 @@ export function createCompetitionAPI(options: OptionsWithDefaults) {
   return {
     async get(eventId: string, ageGroupId: string, competitionId: string): Promise<Competition> {
       return await ky(
-        new URL(`/events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}`, options.host)
+        new URL(`/events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}`, options.host),
       ).json();
     },
     async getAll(eventId: string, ageGroupId: string): Promise<List<Competition>> {
