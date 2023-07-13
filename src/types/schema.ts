@@ -3,6 +3,9 @@
  * Do not make direct changes to the file.
  */
 
+/** WithRequired type helpers */
+type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] };
+
 export interface paths {
   "/events": {
     /** List all events */
@@ -137,9 +140,12 @@ export interface components {
       items: components["schemas"]["Race"][];
       total: number;
     };
-    FullRace: {
-      athletes: components["schemas"]["RaceAthlete"][];
-    } & components["schemas"]["Race"];
+    FullRace: WithRequired<
+      {
+        athletes: components["schemas"]["RaceAthlete"][];
+      } & components["schemas"]["Race"],
+      "athletes"
+    >;
     RaceAthlete: {
       /** @description Start position of the athlete */
       startPos?: number;
@@ -162,8 +168,8 @@ export interface components {
 export type external = Record<string, never>;
 
 export interface operations {
+  /** List all events */
   getEvents: {
-    /** List all events */
     responses: {
       /** @description An array of events */
       200: {
@@ -173,11 +179,11 @@ export interface operations {
       };
     };
   };
+  /** Info for a specific event */
   getEventById: {
-    /** Info for a specific event */
     parameters: {
-      /** @description ID of the event to be fetched */
       path: {
+        /** @description ID of the event to be fetched */
         eventId: string;
       };
     };
@@ -196,11 +202,11 @@ export interface operations {
       };
     };
   };
+  /** List all age groups of an event */
   getAgeGroups: {
-    /** List all age groups of an event */
     parameters: {
-      /** @description ID of the event */
       path: {
+        /** @description ID of the event */
         eventId: string;
       };
     };
@@ -219,13 +225,13 @@ export interface operations {
       };
     };
   };
+  /** Info for a specific athlete */
   getAgeGroupById: {
-    /** Info for a specific athlete */
     parameters: {
-      /** @description ID of the event */
-      /** @description ID of the athlete to be fetched */
       path: {
+        /** @description ID of the event */
         eventId: string;
+        /** @description ID of the athlete to be fetched */
         athleteId: string;
       };
     };
@@ -244,13 +250,13 @@ export interface operations {
       };
     };
   };
+  /** List all competitions of an age group */
   getCompetitions: {
-    /** List all competitions of an age group */
     parameters: {
-      /** @description ID of the event */
-      /** @description ID of the age group */
       path: {
+        /** @description ID of the event */
         eventId: string;
+        /** @description ID of the age group */
         ageGroupId: string;
       };
     };
@@ -269,15 +275,15 @@ export interface operations {
       };
     };
   };
+  /** Info for a specific competition */
   getCompetitionById: {
-    /** Info for a specific competition */
     parameters: {
-      /** @description ID of the event */
-      /** @description ID of the age group */
-      /** @description ID of the competition */
       path: {
+        /** @description ID of the event */
         eventId: string;
+        /** @description ID of the age group */
         ageGroupId: string;
+        /** @description ID of the competition */
         competitionId: string;
       };
     };
@@ -296,15 +302,15 @@ export interface operations {
       };
     };
   };
+  /** List all rounds of a competition */
   getRounds: {
-    /** List all rounds of a competition */
     parameters: {
-      /** @description ID of the event */
-      /** @description ID of the age group */
-      /** @description ID of the competition */
       path: {
+        /** @description ID of the event */
         eventId: string;
+        /** @description ID of the age group */
         ageGroupId: string;
+        /** @description ID of the competition */
         competitionId: string;
       };
     };
@@ -323,17 +329,17 @@ export interface operations {
       };
     };
   };
+  /** Info for a specific round */
   getRoundById: {
-    /** Info for a specific round */
     parameters: {
-      /** @description ID of the event */
-      /** @description ID of the age group */
-      /** @description ID of the competition */
-      /** @description ID of the round */
       path: {
+        /** @description ID of the event */
         eventId: string;
+        /** @description ID of the age group */
         ageGroupId: string;
+        /** @description ID of the competition */
         competitionId: string;
+        /** @description ID of the round */
         roundId: string;
       };
     };
@@ -352,17 +358,17 @@ export interface operations {
       };
     };
   };
+  /** List all races of a round */
   getRaces: {
-    /** List all races of a round */
     parameters: {
-      /** @description ID of the event */
-      /** @description ID of the age group */
-      /** @description ID of the competition */
-      /** @description ID of the round */
       path: {
+        /** @description ID of the event */
         eventId: string;
+        /** @description ID of the age group */
         ageGroupId: string;
+        /** @description ID of the competition */
         competitionId: string;
+        /** @description ID of the round */
         roundId: string;
       };
     };
@@ -381,19 +387,19 @@ export interface operations {
       };
     };
   };
+  /** Info for a specific race */
   getRaceById: {
-    /** Info for a specific race */
     parameters: {
-      /** @description ID of the event */
-      /** @description ID of the age group */
-      /** @description ID of the competition */
-      /** @description ID of the round */
-      /** @description ID of the race */
       path: {
+        /** @description ID of the event */
         eventId: string;
+        /** @description ID of the age group */
         ageGroupId: string;
+        /** @description ID of the competition */
         competitionId: string;
+        /** @description ID of the round */
         roundId: string;
+        /** @description ID of the race */
         raceId: string;
       };
     };
@@ -412,11 +418,11 @@ export interface operations {
       };
     };
   };
+  /** List all athletes of an event */
   getAthletes: {
-    /** List all athletes of an event */
     parameters: {
-      /** @description ID of the event */
       path: {
+        /** @description ID of the event */
         eventId: string;
       };
     };
