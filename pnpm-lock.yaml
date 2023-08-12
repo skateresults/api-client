@@ -38,8 +38,8 @@ devDependencies:
     specifier: 8.0.3
     version: 8.0.3
   openapi-typescript:
-    specifier: 6.4.2
-    version: 6.4.2
+    specifier: 6.4.3
+    version: 6.4.3
   prettier:
     specifier: 3.0.1
     version: 3.0.1
@@ -2174,8 +2174,8 @@ packages:
       is-wsl: 2.2.0
     dev: true
 
-  /openapi-typescript@6.4.2:
-    resolution: {integrity: sha512-XUP9Ykt7DFJTwPQVGYgWmGHMTElstQewLnJBglJKEVo9pZKQiW9OIIDnCiTcxPVexD9AWe5yfcOBAT7hhoT4Gg==}
+  /openapi-typescript@6.4.3:
+    resolution: {integrity: sha512-GbAkQkiadlLRFRfPoIrETa1vwyOUah8NWnW221ykp5eEG+B1la67Ci1gfdIJggCYKueYqj9dISXswRWX3+LmUw==}
     hasBin: true
     dependencies:
       ansi-colors: 4.1.3
