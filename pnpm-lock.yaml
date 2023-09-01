@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   ky:
-    specifier: ^0.33.0
-    version: 0.33.0
+    specifier: ^1.0.0
+    version: 1.0.0
 
 devDependencies:
   '@semantic-release/changelog':
@@ -1812,9 +1812,9 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /ky@0.33.0:
-    resolution: {integrity: sha512-peKzuOlN/q3Q3jOgi4t0cp6DOgif5rVnmiSIsjsmkiOcdnSjkrKSUqQmRWYCTqjUtR9b3xQQr8aj7KwSW1r49A==}
-    engines: {node: '>=14.16'}
+  /ky@1.0.0:
+    resolution: {integrity: sha512-ptUup6btycj2IXLL/L5Bh/QC9ghYC2k/BsnnSf0ccEap8FpCvJ32FL5s5Potb8NkH6HOTdnVGmyI1wkHZ3mfEQ==}
+    engines: {node: '>=18'}
     dev: false
 
   /levn@0.4.1:

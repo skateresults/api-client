@@ -54,6 +54,6 @@
     "typescript": "5.2.2"
   },
   "dependencies": {
-    "ky": "^0.33.0"
+    "ky": "^1.0.0"
   }
 }
