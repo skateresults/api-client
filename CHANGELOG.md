@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/skateresults/api-client/compare/v1.1.0...v1.1.1) (2023-09-01)
+
+
+### Bug Fixes
+
+* use ky v1.0.0 ([037b257](https://github.com/skateresults/api-client/commit/037b257998043c34a663cb7b4a5d78eb934ea2d5))
+
 # [1.1.0](https://github.com/skateresults/api-client/compare/v1.0.2...v1.1.0) (2023-02-01)
 
 
