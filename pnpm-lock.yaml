@@ -7,7 +7,7 @@ settings:
 dependencies:
   ky:
     specifier: ^1.0.0
-    version: 1.0.0
+    version: 1.0.1
 
 devDependencies:
   '@semantic-release/changelog':
@@ -65,8 +65,8 @@ packages:
       chalk: 2.4.2
     dev: true
 
-  /@babel/helper-validator-identifier@7.22.5:
-    resolution: {integrity: sha512-aJXu+6lErq8ltp+JhkJUfk1MTGyuA4v7f3pA+BJ5HLfNC6nAQ0Cpi9uOquUj8Hehg0aUiHzWQbOVJGao6ztBAQ==}
+  /@babel/helper-validator-identifier@7.22.15:
+    resolution: {integrity: sha512-4E/F9IIEi8WR94324mbDUMo074YTheJmd7eZF5vITTeYchqAi6sYXRLHUVsmkdmY4QjfKTcB2jB7dVP3NaBElQ==}
     engines: {node: '>=6.9.0'}
     dev: true
 
@@ -74,7 +74,7 @@ packages:
     resolution: {integrity: sha512-C/BaXcnnvBCmHTpz/VGZ8jgtE2aYlW4hxDhseJAWZb7gqGM/qtCK6iZUb0TyKFf7BOUsBH7Q7fkRsDRhg1XklQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/helper-validator-identifier': 7.22.5
+      '@babel/helper-validator-identifier': 7.22.15
       chalk: 2.4.2
       js-tokens: 4.0.0
     dev: true
@@ -356,8 +356,8 @@ packages:
       - supports-color
     dev: true
 
-  /@semantic-release/github@9.0.4(semantic-release@21.1.1):
-    resolution: {integrity: sha512-kQCGFAsBErvCR6hzNuzu63cj4erQN2krm9zQlg8vl4j5X0mL0d/Ras0wmL5Gkr1TuSS2lweME7M4J5zvtDDDSA==}
+  /@semantic-release/github@9.0.5(semantic-release@21.1.1):
+    resolution: {integrity: sha512-d1ZZjMvXpSa4E1L3XjdNOqgUy00o9QZX55L75pMsb/w+1NV6CCfDYOvH8qwKygHS/rKzI3FkBTcR40ahOodsgg==}
     engines: {node: '>=18'}
     peerDependencies:
       semantic-release: '>=20.1.0'
@@ -372,7 +372,7 @@ packages:
       dir-glob: 3.0.1
       globby: 13.2.2
       http-proxy-agent: 7.0.0
-      https-proxy-agent: 7.0.1
+      https-proxy-agent: 7.0.2
       issue-parser: 6.0.0
       lodash-es: 4.17.21
       mime: 3.0.0
@@ -469,7 +469,7 @@ packages:
       ignore: 5.2.4
       natural-compare: 1.4.0
       semver: 7.5.4
-      ts-api-utils: 1.0.2(typescript@5.2.2)
+      ts-api-utils: 1.0.3(typescript@5.2.2)
       typescript: 5.2.2
     transitivePeerDependencies:
       - supports-color
@@ -518,7 +518,7 @@ packages:
       '@typescript-eslint/utils': 6.6.0(eslint@8.48.0)(typescript@5.2.2)
       debug: 4.3.4
       eslint: 8.48.0
-      ts-api-utils: 1.0.2(typescript@5.2.2)
+      ts-api-utils: 1.0.3(typescript@5.2.2)
       typescript: 5.2.2
     transitivePeerDependencies:
       - supports-color
@@ -544,7 +544,7 @@ packages:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.4
-      ts-api-utils: 1.0.2(typescript@5.2.2)
+      ts-api-utils: 1.0.3(typescript@5.2.2)
       typescript: 5.2.2
     transitivePeerDependencies:
       - supports-color
@@ -909,8 +909,8 @@ packages:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: true
 
-  /cosmiconfig@8.3.3(typescript@5.2.2):
-    resolution: {integrity: sha512-/VY+0IvFoE47hwgKHu8feeBFIb1Z1mcJFiLrNwaJpLoLa9qwLVquMGMr2OUwQmhpJDtsSQSasg/TMv1imec9xA==}
+  /cosmiconfig@8.3.5(typescript@5.2.2):
+    resolution: {integrity: sha512-A5Xry3xfS96wy2qbiLkQLAg4JUrR2wvfybxj6yqLmrUfMAvhS3MZxIP2oQn0grgYIvJqzpeTEWu4vK0t+12NNw==}
     engines: {node: '>=14'}
     peerDependencies:
       typescript: '>=4.9.5'
@@ -1547,8 +1547,8 @@ packages:
       - supports-color
     dev: true
 
-  /https-proxy-agent@7.0.1:
-    resolution: {integrity: sha512-Eun8zV0kcYS1g19r78osiQLEFIRspRUDd9tIfBCTBPBeMieF/EsJNL8VI3xOIdYRDEkjQnqOYPsZ2DsWsVsFwQ==}
+  /https-proxy-agent@7.0.2:
+    resolution: {integrity: sha512-NmLNjm6ucYwtcUmL7JQC1ZQ57LmHP4lT15FQ8D61nak1rO6DH+fz5qNK2Ap5UN4ZapYICE3/0KodcLYSPsPbaA==}
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.0
@@ -1823,8 +1823,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /ky@1.0.0:
-    resolution: {integrity: sha512-ptUup6btycj2IXLL/L5Bh/QC9ghYC2k/BsnnSf0ccEap8FpCvJ32FL5s5Potb8NkH6HOTdnVGmyI1wkHZ3mfEQ==}
+  /ky@1.0.1:
+    resolution: {integrity: sha512-UvcwpQO0LOuZwG0Ti3VDo6w57KYt+r4bWEYlNaMt82hgyFtse86QtOGum1RzsZni31FndXQl6NvtDArfunt2JQ==}
     engines: {node: '>=18'}
     dev: false
 
@@ -2230,7 +2230,7 @@ packages:
       fast-glob: 3.3.1
       js-yaml: 4.1.0
       supports-color: 9.4.0
-      undici: 5.23.0
+      undici: 5.24.0
       yargs-parser: 21.1.1
     dev: true
 
@@ -2624,11 +2624,11 @@ packages:
     dependencies:
       '@semantic-release/commit-analyzer': 10.0.4(semantic-release@21.1.1)
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 9.0.4(semantic-release@21.1.1)
+      '@semantic-release/github': 9.0.5(semantic-release@21.1.1)
       '@semantic-release/npm': 10.0.5(semantic-release@21.1.1)
       '@semantic-release/release-notes-generator': 11.0.7(semantic-release@21.1.1)
       aggregate-error: 4.0.1
-      cosmiconfig: 8.3.3(typescript@5.2.2)
+      cosmiconfig: 8.3.5(typescript@5.2.2)
       debug: 4.3.4
       env-ci: 9.1.1
       execa: 8.0.1
@@ -2930,8 +2930,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-api-utils@1.0.2(typescript@5.2.2):
-    resolution: {integrity: sha512-Cbu4nIqnEdd+THNEsBdkolnOXhg0I8XteoHaEKgvsxpsbWda4IsUut2c187HxywQCvveojow0Dgw/amxtSKVkQ==}
+  /ts-api-utils@1.0.3(typescript@5.2.2):
+    resolution: {integrity: sha512-wNMeqtMz5NtwpT/UZGY5alT+VoKdSsOOP/kqHFcUW1P/VRhH2wJ48+DN2WwUliNbQ976ETwDL0Ifd2VVvgonvg==}
     engines: {node: '>=16.13.0'}
     peerDependencies:
       typescript: '>=4.2.0'
@@ -3004,8 +3004,8 @@ packages:
     dev: true
     optional: true
 
-  /undici@5.23.0:
-    resolution: {integrity: sha512-1D7w+fvRsqlQ9GscLBwcAJinqcZGHUKjbOmXdlE/v8BvEGXjeWAax+341q44EuTcHXXnfyKNbKRq4Lg7OzhMmg==}
+  /undici@5.24.0:
+    resolution: {integrity: sha512-OKlckxBjFl0oXxcj9FU6oB8fDAaiRUq+D8jrFWGmOfI/gIyjk/IeS75LMzgYKUaeHzLUcYvf9bbJGSrUwTfwwQ==}
     engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
