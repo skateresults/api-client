@@ -28,7 +28,7 @@
     "lint": "eslint 'src/**' --fix",
     "update-schema": "pnpm run download-schema && pnpm run generate-types",
     "download-schema": "curl https://skateresults.github.io/api/openapi.json --output openapi.json",
-    "generate-types": "pnpx openapi-typescript 'openapi.json' --output src/types/schema.ts"
+    "generate-types": "pnpx openapi-typescript 'openapi.json' --output src/types/schema.ts && prettier --write src/types/schema.ts"
   },
   "repository": {
     "type": "git",
