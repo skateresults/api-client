@@ -51,7 +51,7 @@
     "openapi-typescript": "6.7.4",
     "prettier": "3.0.3",
     "semantic-release": "22.0.5",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   },
   "dependencies": {
     "ky": "^1.0.0"
