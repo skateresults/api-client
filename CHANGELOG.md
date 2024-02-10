@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/skateresults/api-client/compare/v1.1.1...v1.2.0) (2024-02-10)
+
+
+### Features
+
+* API v1.2 ([2d2170f](https://github.com/skateresults/api-client/commit/2d2170f630e0881eb18064575470456ae4bafde5))
+
 ## [1.1.1](https://github.com/skateresults/api-client/compare/v1.1.0...v1.1.1) (2023-09-01)
 
 
