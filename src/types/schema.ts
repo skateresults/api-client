@@ -23,6 +23,10 @@ export interface paths {
     /** Info for a specific age group */
     get: operations["getAgeGroupById"];
   };
+  "/events/{eventId}/age-groups/{ageGroupId}/athletes": {
+    /** List all athletes of an age group of an event */
+    get: operations["getAthletesByAgeGroup"];
+  };
   "/events/{eventId}/age-groups/{ageGroupId}/competitions": {
     /** List all competitions of an age group */
     get: operations["getCompetitions"];
@@ -63,6 +67,7 @@ export interface components {
   schemas: {
     Event: {
       id: string;
+      slug: string;
       public: boolean;
       name: string;
       /** Format: date */
@@ -165,6 +170,8 @@ export interface components {
   pathItems: never;
 }
 
+export type $defs = Record<string, never>;
+
 export type external = Record<string, never>;
 
 export interface operations {
@@ -243,6 +250,31 @@ export interface operations {
         };
       };
       /** @description Athlete not found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  /** List all athletes of an age group of an event */
+  getAthletesByAgeGroup: {
+    parameters: {
+      path: {
+        /** @description ID of the event */
+        eventId: string;
+        /** @description ID of the age group */
+        ageGroupId: string;
+      };
+    };
+    responses: {
+      /** @description An array of athletes */
+      200: {
+        content: {
+          "application/json": components["schemas"]["Athletes"];
+        };
+      };
+      /** @description Event or age group not found */
       404: {
         content: {
           "application/json": components["schemas"]["Error"];

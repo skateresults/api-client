@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.0.0",
+    "version": "1.2.0",
     "title": "Skate Results"
   },
   "servers": [
@@ -152,6 +152,55 @@
           },
           "404": {
             "description": "Age group or event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/age-groups/{ageGroupId}/athletes": {
+      "get": {
+        "summary": "List all athletes of an age group of an event",
+        "operationId": "getAthletesByAgeGroup",
+        "tags": ["athletes", "age-groups"],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ageGroupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the age group",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of athletes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Athletes"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Event or age group not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -632,9 +681,12 @@
     "schemas": {
       "Event": {
         "type": "object",
-        "required": ["id", "public", "name", "dateBegin", "dateEnd"],
+        "required": ["id", "slug", "public", "name", "dateBegin", "dateEnd"],
         "properties": {
           "id": {
+            "type": "string"
+          },
+          "slug": {
             "type": "string"
           },
           "public": {
