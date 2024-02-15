@@ -1,3 +1,4 @@
+import ky from "ky";
 import { Options } from "../types/Options.js";
 import { createAgeGroupAPI } from "./age-group.js";
 import { createAthleteAPI } from "./athlete.js";
@@ -22,12 +23,17 @@ export function createClient(options: Options = {}): Client {
     ...options,
   };
 
+  const kyInstance = ky.create({
+    prefixUrl: optionsWithDefaults.host,
+    headers: optionsWithDefaults.token ? { Authorization: `Bearer ${optionsWithDefaults.token}` } : {},
+  });
+
   return {
-    ageGroup: createAgeGroupAPI(optionsWithDefaults),
-    athlete: createAthleteAPI(optionsWithDefaults),
-    competition: createCompetitionAPI(optionsWithDefaults),
-    event: createEventAPI(optionsWithDefaults),
-    races: createRaceAPI(optionsWithDefaults),
-    round: createRoundAPI(optionsWithDefaults),
+    ageGroup: createAgeGroupAPI(kyInstance),
+    athlete: createAthleteAPI(kyInstance),
+    competition: createCompetitionAPI(kyInstance),
+    event: createEventAPI(kyInstance),
+    races: createRaceAPI(kyInstance),
+    round: createRoundAPI(kyInstance),
   };
 }

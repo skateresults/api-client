@@ -1,14 +1,13 @@
-import ky from "ky";
 import { AgeGroup, List } from "../types/index.js";
-import { OptionsWithDefaults } from "./internal-types.js";
+import { KyInstance } from "./internal-types.js";
 
-export function createAgeGroupAPI(options: OptionsWithDefaults) {
+export function createAgeGroupAPI(ky: KyInstance) {
   return {
     async get(eventId: string, ageGroupId: string): Promise<AgeGroup> {
-      return await ky(new URL(`/events/${eventId}/age-groups/${ageGroupId}`, options.host)).json();
+      return await ky(`/events/${eventId}/age-groups/${ageGroupId}`).json();
     },
     async getAll(eventId: string): Promise<List<AgeGroup>> {
-      return await ky(new URL(`/events/${eventId}/age-groups`, options.host)).json();
+      return await ky(`/events/${eventId}/age-groups`).json();
     },
   };
 }
