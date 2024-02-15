@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/skateresults/api-client/compare/v1.2.0...v1.3.0) (2024-02-15)
+
+
+### Features
+
+* `retry` option; `0` by default ([7013850](https://github.com/skateresults/api-client/commit/70138504a008b15bd85e9aaca32731ebc36b4543))
+
 # [1.2.0](https://github.com/skateresults/api-client/compare/v1.1.1...v1.2.0) (2024-02-10)
 
 
