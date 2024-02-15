@@ -20,12 +20,14 @@ export interface Client {
 export function createClient(options: Options = {}): Client {
   const optionsWithDefaults: OptionsWithDefaults = {
     host: "https://api.skateresults.app",
+    retry: 0,
     ...options,
   };
 
   const kyInstance = ky.create({
     prefixUrl: optionsWithDefaults.host,
     headers: optionsWithDefaults.token ? { Authorization: `Bearer ${optionsWithDefaults.token}` } : {},
+    retry: optionsWithDefaults.retry,
   });
 
   return {

@@ -4,4 +4,5 @@ export interface Options {
    */
   host?: string;
   token?: string;
+  retry?: number;
 }
