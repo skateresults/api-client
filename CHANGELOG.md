@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/skateresults/api-client/compare/v1.3.0...v1.3.1) (2024-02-18)
+
+
+### Bug Fixes
+
+* remove leading slash from paths ([b8a1152](https://github.com/skateresults/api-client/commit/b8a1152743f7d67a5bca3474d641ca2cf7275997))
+
 # [1.3.0](https://github.com/skateresults/api-client/compare/v1.2.0...v1.3.0) (2024-02-15)
 
 
