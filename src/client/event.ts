@@ -4,10 +4,10 @@ import { KyInstance } from "./internal-types.js";
 export function createEventAPI(ky: KyInstance) {
   return {
     async get(eventId: string): Promise<Event> {
-      return await ky(`/events/${eventId}`).json();
+      return await ky(`events/${eventId}`).json();
     },
     async getAll(): Promise<List<Event>> {
-      return await ky("/events").json();
+      return await ky(`events`).json();
     },
   };
 }

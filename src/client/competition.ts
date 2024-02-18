@@ -5,10 +5,10 @@ import { KyInstance } from "./internal-types.js";
 export function createCompetitionAPI(ky: KyInstance) {
   return {
     async get(eventId: string, ageGroupId: string, competitionId: string): Promise<Competition> {
-      return await ky(`/events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}`).json();
+      return await ky(`events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}`).json();
     },
     async getAll(eventId: string, ageGroupId: string): Promise<List<Competition>> {
-      return await ky(`/events/${eventId}/age-groups/${ageGroupId}/competitions`).json();
+      return await ky(`events/${eventId}/age-groups/${ageGroupId}/competitions`).json();
     },
   };
 }

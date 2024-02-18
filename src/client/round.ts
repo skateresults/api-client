@@ -9,7 +9,7 @@ export function createRoundAPI(ky: KyInstance) {
       ).json();
     },
     async getAll(eventId: string, ageGroupId: string, competitionId: string): Promise<List<Round>> {
-      return await ky(`/events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}/rounds`).json();
+      return await ky(`events/${eventId}/age-groups/${ageGroupId}/competitions/${competitionId}/rounds`).json();
     },
   };
 }
