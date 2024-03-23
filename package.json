@@ -20,7 +20,7 @@
   "packageManager": "pnpm@8.15.5",
   "type": "module",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "start": "tsc --watch",
     "build": "tsc",
     "semantic-release": "semantic-release",
