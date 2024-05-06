@@ -17,7 +17,7 @@
   "files": [
     "lib"
   ],
-  "packageManager": "pnpm@9.0.5",
+  "packageManager": "pnpm@9.1.0",
   "type": "module",
   "scripts": {
     "prepare": "husky",
