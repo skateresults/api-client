@@ -630,7 +630,7 @@
     "/events/{eventId}/athletes/{athleteId}": {
       "get": {
         "summary": "Info for a specific athlete",
-        "operationId": "getAgeGroupById",
+        "operationId": "getAthleteById",
         "tags": ["athletes"],
         "parameters": [
           {

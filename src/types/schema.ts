@@ -3,66 +3,230 @@
  * Do not make direct changes to the file.
  */
 
-/** WithRequired type helpers */
-type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] };
-
 export interface paths {
   "/events": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** List all events */
     get: operations["getEvents"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** Info for a specific event */
     get: operations["getEventById"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/age-groups": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** List all age groups of an event */
     get: operations["getAgeGroups"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/age-groups/{ageGroupId}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** Info for a specific age group */
     get: operations["getAgeGroupById"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/age-groups/{ageGroupId}/athletes": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** List all athletes of an age group of an event */
     get: operations["getAthletesByAgeGroup"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/age-groups/{ageGroupId}/competitions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** List all competitions of an age group */
     get: operations["getCompetitions"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** Info for a specific competition */
     get: operations["getCompetitionById"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** List all rounds of a competition */
     get: operations["getRounds"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds/{roundId}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** Info for a specific round */
     get: operations["getRoundById"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds/{roundId}/races": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** List all races of a round */
     get: operations["getRaces"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds/{roundId}/races/{raceId}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** Info for a specific race */
     get: operations["getRaceById"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/athletes": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** List all athletes of an event */
     get: operations["getAthletes"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/events/{eventId}/athletes/{athleteId}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** Info for a specific athlete */
-    get: operations["getAgeGroupById"];
+    get: operations["getAthleteById"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
 }
-
 export type webhooks = Record<string, never>;
-
 export interface components {
   schemas: {
     Event: {
@@ -145,12 +309,9 @@ export interface components {
       items: components["schemas"]["Race"][];
       total: number;
     };
-    FullRace: WithRequired<
-      {
-        athletes: components["schemas"]["RaceAthlete"][];
-      } & components["schemas"]["Race"],
-      "athletes"
-    >;
+    FullRace: {
+      athletes: components["schemas"]["RaceAthlete"][];
+    } & components["schemas"]["Race"];
     RaceAthlete: {
       /** @description Start position of the athlete */
       startPos?: number;
@@ -169,147 +330,198 @@ export interface components {
   headers: never;
   pathItems: never;
 }
-
 export type $defs = Record<string, never>;
-
-export type external = Record<string, never>;
-
 export interface operations {
-  /** List all events */
   getEvents: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
     responses: {
       /** @description An array of events */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Events"];
         };
       };
     };
   };
-  /** Info for a specific event */
   getEventById: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event to be fetched */
         eventId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description Event object */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Event"];
         };
       };
       /** @description Event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** List all age groups of an event */
   getAgeGroups: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description An array of age groups */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["AgeGroups"];
         };
       };
       /** @description Event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** Info for a specific athlete */
   getAgeGroupById: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
-        /** @description ID of the athlete to be fetched */
-        athleteId: string;
+        /** @description ID of the age group to be fetched */
+        ageGroupId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
-      /** @description athlete object */
+      /** @description Age group object */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          "application/json": components["schemas"]["Athlete"];
+          "application/json": components["schemas"]["AgeGroup"];
         };
       };
-      /** @description Athlete not found */
+      /** @description Age group or event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** List all athletes of an age group of an event */
   getAthletesByAgeGroup: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
         /** @description ID of the age group */
         ageGroupId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description An array of athletes */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Athletes"];
         };
       };
       /** @description Event or age group not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** List all competitions of an age group */
   getCompetitions: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
         /** @description ID of the age group */
         ageGroupId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description An array of competitions */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Competitions"];
         };
       };
       /** @description Age group or event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** Info for a specific competition */
   getCompetitionById: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
@@ -318,25 +530,34 @@ export interface operations {
         /** @description ID of the competition */
         competitionId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description Competition object */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Competition"];
         };
       };
       /** @description Competition, age group, or event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** List all rounds of a competition */
   getRounds: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
@@ -345,25 +566,34 @@ export interface operations {
         /** @description ID of the competition */
         competitionId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description An array of rounds */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Round"];
         };
       };
       /** @description Competition, age group or event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** Info for a specific round */
   getRoundById: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
@@ -374,25 +604,34 @@ export interface operations {
         /** @description ID of the round */
         roundId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description Round object */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Round"];
         };
       };
       /** @description Round, competition, age group, or event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** List all races of a round */
   getRaces: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
@@ -403,25 +642,34 @@ export interface operations {
         /** @description ID of the round */
         roundId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description An array of races */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Races"];
         };
       };
       /** @description Round. competition, age group or event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** Info for a specific race */
   getRaceById: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
@@ -434,39 +682,90 @@ export interface operations {
         /** @description ID of the race */
         raceId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description Race object */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Race"];
         };
       };
       /** @description Race, round, competition, age group, or event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
       };
     };
   };
-  /** List all athletes of an event */
   getAthletes: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
         /** @description ID of the event */
         eventId: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description An array of athletes */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Athletes"];
         };
       };
       /** @description Event not found */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  getAthleteById: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description ID of the event */
+        eventId: string;
+        /** @description ID of the athlete to be fetched */
+        athleteId: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description athlete object */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Athlete"];
+        };
+      };
+      /** @description Athlete not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Error"];
         };
