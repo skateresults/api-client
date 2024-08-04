@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/skateresults/api-client/compare/v1.3.1...v1.4.0) (2024-08-04)
+
+
+### Features
+
+* add series API ([ef935e6](https://github.com/skateresults/api-client/commit/ef935e635020587d1a10c153c14e825c1ee47fcf))
+* update types ([4a92ddb](https://github.com/skateresults/api-client/commit/4a92ddb72ea383b581cb3e6e4e6979677a325bc8))
+
 ## [1.3.1](https://github.com/skateresults/api-client/compare/v1.3.0...v1.3.1) (2024-02-18)
 
 
