@@ -7,6 +7,7 @@ import { createEventAPI } from "./event.js";
 import { OptionsWithDefaults } from "./internal-types.js";
 import { createRaceAPI } from "./race.js";
 import { createRoundAPI } from "./round.js";
+import { createSeriesAPI } from "./series.js";
 
 export interface Client {
   ageGroup: ReturnType<typeof createAgeGroupAPI>;
@@ -15,6 +16,7 @@ export interface Client {
   competition: ReturnType<typeof createCompetitionAPI>;
   races: ReturnType<typeof createRaceAPI>;
   round: ReturnType<typeof createRoundAPI>;
+  series: ReturnType<typeof createSeriesAPI>;
 }
 
 export function createClient(options: Options = {}): Client {
@@ -37,5 +39,6 @@ export function createClient(options: Options = {}): Client {
     event: createEventAPI(kyInstance),
     races: createRaceAPI(kyInstance),
     round: createRoundAPI(kyInstance),
+    series: createSeriesAPI(kyInstance),
   };
 }
