@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.2.0",
+    "version": "1.2.2",
     "title": "Skate Results"
   },
   "servers": [
@@ -18,7 +18,7 @@
     "/events": {
       "get": {
         "summary": "List all events",
-        "operationId": "getEvents",
+        "operationId": "getEventList",
         "tags": ["events"],
         "responses": {
           "200": {
@@ -26,7 +26,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/EventList"
                 }
               }
             }
@@ -77,7 +77,7 @@
     "/events/{eventId}/age-groups": {
       "get": {
         "summary": "List all age groups of an event",
-        "operationId": "getAgeGroups",
+        "operationId": "getAgeGroupList",
         "tags": ["age-groups"],
         "parameters": [
           {
@@ -96,7 +96,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AgeGroups"
+                  "$ref": "#/components/schemas/AgeGroupList"
                 }
               }
             }
@@ -194,7 +194,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Athletes"
+                  "$ref": "#/components/schemas/AthleteList"
                 }
               }
             }
@@ -215,7 +215,7 @@
     "/events/{eventId}/age-groups/{ageGroupId}/competitions": {
       "get": {
         "summary": "List all competitions of an age group",
-        "operationId": "getCompetitions",
+        "operationId": "getCompetitionList",
         "tags": ["competitions"],
         "parameters": [
           {
@@ -243,7 +243,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Competitions"
+                  "$ref": "#/components/schemas/CompetitionList"
                 }
               }
             }
@@ -322,7 +322,7 @@
     "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds": {
       "get": {
         "summary": "List all rounds of a competition",
-        "operationId": "getRounds",
+        "operationId": "getRoundList",
         "tags": ["rounds"],
         "parameters": [
           {
@@ -447,7 +447,7 @@
     "/events/{eventId}/age-groups/{ageGroupId}/competitions/{competitionId}/rounds/{roundId}/races": {
       "get": {
         "summary": "List all races of a round",
-        "operationId": "getRaces",
+        "operationId": "getRaceList",
         "tags": ["races"],
         "parameters": [
           {
@@ -493,7 +493,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Races"
+                  "$ref": "#/components/schemas/RaceList"
                 }
               }
             }
@@ -590,7 +590,7 @@
     "/events/{eventId}/athletes": {
       "get": {
         "summary": "List all athletes of an event",
-        "operationId": "getAthletes",
+        "operationId": "getAthleteList",
         "tags": ["athletes"],
         "parameters": [
           {
@@ -609,7 +609,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Athletes"
+                  "$ref": "#/components/schemas/AthleteList"
                 }
               }
             }
@@ -675,22 +675,78 @@
           }
         }
       }
+    },
+    "/series": {
+      "get": {
+        "summary": "List all series",
+        "operationId": "getSeriesList",
+        "tags": ["series"],
+        "responses": {
+          "200": {
+            "description": "An array of series",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeriesList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/series/{seriesId}": {
+      "get": {
+        "summary": "Info for a specific series",
+        "operationId": "getSeriesById",
+        "tags": ["series"],
+        "parameters": [
+          {
+            "name": "seriesId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the series to be fetched",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Series object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Series"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Series not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
       "Event": {
         "type": "object",
-        "required": ["id", "slug", "public", "name", "dateBegin", "dateEnd"],
+        "required": ["id", "slug", "name", "dateBegin", "dateEnd"],
         "properties": {
           "id": {
             "type": "string"
           },
           "slug": {
             "type": "string"
-          },
-          "public": {
-            "type": "boolean"
           },
           "name": {
             "type": "string"
@@ -705,7 +761,7 @@
           }
         }
       },
-      "Events": {
+      "EventList": {
         "type": "object",
         "required": ["items", "total"],
         "properties": {
@@ -713,6 +769,44 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Event"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        }
+      },
+      "Series": {
+        "type": "object",
+        "required": ["id", "slug", "name", "dateBegin", "dateEnd"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "dateBegin": {
+            "type": "string",
+            "format": "date"
+          },
+          "dateEnd": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "SeriesList": {
+        "type": "object",
+        "required": ["items", "total"],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Series"
             }
           },
           "total": {
@@ -746,7 +840,7 @@
           }
         }
       },
-      "AgeGroups": {
+      "AgeGroupList": {
         "type": "object",
         "required": ["items", "total"],
         "properties": {
@@ -819,7 +913,7 @@
           }
         }
       },
-      "Athletes": {
+      "AthleteList": {
         "type": "object",
         "required": ["items", "total"],
         "properties": {
@@ -858,7 +952,7 @@
           }
         }
       },
-      "Competitions": {
+      "CompetitionList": {
         "type": "object",
         "required": ["items", "total"],
         "properties": {
@@ -894,7 +988,7 @@
           }
         }
       },
-      "Rounds": {
+      "RoundList": {
         "type": "object",
         "required": ["items", "total"],
         "properties": {
@@ -924,7 +1018,7 @@
           }
         }
       },
-      "Races": {
+      "RaceList": {
         "type": "object",
         "required": ["items", "total"],
         "properties": {
