@@ -19,8 +19,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1(semantic-release@22.0.12(typescript@5.6.3))
       '@tsconfig/recommended':
-        specifier: 1.0.7
-        version: 1.0.7
+        specifier: 1.0.8
+        version: 1.0.8
       '@typescript-eslint/eslint-plugin':
         specifier: 8.0.0
         version: 8.0.0(@typescript-eslint/parser@8.0.0(eslint@8.57.0)(typescript@5.6.3))(eslint@8.57.0)(typescript@5.6.3)
@@ -243,8 +243,8 @@ packages:
     resolution: {integrity: sha512-JiX9vxoKMmu8Y3Zr2RVathBL1Cdu4Nt4MuNWemt1Nc06A0RAin9c5FArkhGsyMBWfCu4zj+9b+GxtjAnE4qqLQ==}
     engines: {node: '>=10'}
 
-  '@tsconfig/recommended@1.0.7':
-    resolution: {integrity: sha512-xiNMgCuoy4mCL4JTywk9XFs5xpRUcKxtWEcMR6FNMtsgewYTIgIR+nvlP4A4iRCAzRsHMnPhvTRrzp4AGcRTEA==}
+  '@tsconfig/recommended@1.0.8':
+    resolution: {integrity: sha512-TotjFaaXveVUdsrXCdalyF6E5RyG6+7hHHQVZonQtdlk1rJZ1myDIvPUUKPhoYv+JAzThb2lQJh9+9ZfF46hsA==}
 
   '@types/normalize-package-data@2.4.2':
     resolution: {integrity: sha512-lqa4UEhhv/2sjjIQgjX8B+RBjj47eo0mzGasklVJ78UKGQY1r0VpB9XHDaZZO9qzEFDdy4MrXLuEaSmPrPSe/A==}
@@ -1999,7 +1999,7 @@ snapshots:
 
   '@sindresorhus/is@3.1.2': {}
 
-  '@tsconfig/recommended@1.0.7': {}
+  '@tsconfig/recommended@1.0.8': {}
 
   '@types/normalize-package-data@2.4.2': {}
 
