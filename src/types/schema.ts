@@ -188,7 +188,8 @@ export interface paths {
     delete?: never;
     options?: never;
     head?: never;
-    patch?: never;
+    /** Update info for a specific race */
+    patch: operations["patchRaceById"];
     trace?: never;
   };
   "/events/{eventId}/athletes": {
@@ -263,6 +264,13 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    Address: {
+      addressLines?: string[];
+      postalCode?: string;
+      city?: string;
+      /** @description ISO 3166-1 alpha-2 country code */
+      country?: string;
+    };
     Event: {
       id: string;
       slug: string;
@@ -271,6 +279,7 @@ export interface components {
       dateBegin: string;
       /** Format: date */
       dateEnd: string;
+      address?: components["schemas"]["Address"];
     };
     EventList: {
       items: components["schemas"]["Event"][];
@@ -311,6 +320,7 @@ export interface components {
       club?: string;
       team?: string;
       nation?: string;
+      transponders: string[];
       overallResult: {
         rank?: number;
       };
@@ -350,19 +360,22 @@ export interface components {
       id: string;
       done: boolean;
       seeded: boolean;
+      videoUrl: string | null;
+    };
+    FullRace: components["schemas"]["Race"] & {
+      athletes: components["schemas"]["RaceAthlete"][];
     };
     RaceList: {
       items: components["schemas"]["Race"][];
       total: number;
     };
-    FullRace: {
-      athletes: components["schemas"]["RaceAthlete"][];
-    } & components["schemas"]["Race"];
     RaceAthlete: {
       /** @description Start position of the athlete */
       startPos?: number;
       /** @description Final rank of the athlete */
       rank?: number;
+      /** @description Time of the athlete */
+      time?: string;
       athlete: components["schemas"]["Athlete"];
     };
     Error: {
@@ -733,6 +746,56 @@ export interface operations {
     requestBody?: never;
     responses: {
       /** @description Race object */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FullRace"];
+        };
+      };
+      /** @description Race, round, competition, age group, or event not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  patchRaceById: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description ID of the event */
+        eventId: string;
+        /** @description ID of the age group */
+        ageGroupId: string;
+        /** @description ID of the competition */
+        competitionId: string;
+        /** @description ID of the round */
+        roundId: string;
+        /** @description ID of the race */
+        raceId: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          /** @constant */
+          op: "replace";
+          /** @constant */
+          path: "/videoUrl";
+          value: string | null;
+        }[];
+      };
+    };
+    responses: {
+      /** @description Successfully updated race info */
       200: {
         headers: {
           [name: string]: unknown;

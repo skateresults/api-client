@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.2.2",
+    "version": "1.5.0",
     "title": "Skate Results"
   },
   "servers": [
@@ -569,6 +569,116 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "$ref": "#/components/schemas/FullRace"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Race, round, competition, age group, or event not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update info for a specific race",
+        "operationId": "patchRaceById",
+        "tags": ["races"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the event",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ageGroupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the age group",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the competition",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roundId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the round",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "raceId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the race",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "type": "string",
+                      "const": "replace"
+                    },
+                    "path": {
+                      "type": "string",
+                      "const": "/videoUrl"
+                    },
+                    "value": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": ["op", "path", "value"]
+                },
+                "minItems": 1,
+                "maxItems": 1
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully updated race info",
+            "content": {
+              "application/json": {
+                "schema": {
                   "$ref": "#/components/schemas/Race"
                 }
               }
@@ -737,7 +847,36 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
     "schemas": {
+      "Address": {
+        "type": "object",
+        "properties": {
+          "addressLines": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$",
+            "description": "ISO 3166-1 alpha-2 country code"
+          }
+        }
+      },
       "Event": {
         "type": "object",
         "required": ["id", "slug", "name", "dateBegin", "dateEnd"],
@@ -758,6 +897,9 @@
           "dateEnd": {
             "type": "string",
             "format": "date"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
           }
         }
       },
@@ -857,7 +999,7 @@
       },
       "Athlete": {
         "type": "object",
-        "required": ["id", "event", "overallResult", "competitionResults"],
+        "required": ["id", "event", "transponders", "overallResult", "competitionResults"],
         "properties": {
           "id": {
             "type": "string"
@@ -881,6 +1023,12 @@
           },
           "nation": {
             "type": "string"
+          },
+          "transponders": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "overallResult": {
             "type": "object",
@@ -1005,7 +1153,7 @@
       },
       "Race": {
         "type": "object",
-        "required": ["id", "done", "seeded"],
+        "required": ["id", "done", "seeded", "videoUrl"],
         "properties": {
           "id": {
             "type": "string"
@@ -1015,8 +1163,29 @@
           },
           "seeded": {
             "type": "boolean"
+          },
+          "videoUrl": {
+            "type": "string",
+            "nullable": true
           }
         }
+      },
+      "FullRace": {
+        "allOf": [
+          { "$ref": "#/components/schemas/Race" },
+          {
+            "type": "object",
+            "required": ["athletes"],
+            "properties": {
+              "athletes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RaceAthlete"
+                }
+              }
+            }
+          }
+        ]
       },
       "RaceList": {
         "type": "object",
@@ -1033,23 +1202,6 @@
           }
         }
       },
-      "FullRace": {
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Race"
-          }
-        ],
-        "required": ["athletes"],
-        "properties": {
-          "athletes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RaceAthlete"
-            }
-          }
-        }
-      },
       "RaceAthlete": {
         "type": "object",
         "required": ["athlete"],
@@ -1061,6 +1213,10 @@
           "rank": {
             "type": "number",
             "description": "Final rank of the athlete"
+          },
+          "time": {
+            "type": "string",
+            "description": "Time of the athlete"
           },
           "athlete": {
             "$ref": "#/components/schemas/Athlete"
