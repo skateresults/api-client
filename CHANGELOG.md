@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/skateresults/api-client/compare/v1.4.0...v1.5.0) (2026-09-17)
+
+
+### Features
+
+* **types:** update generated API schema ([#260](https://github.com/skateresults/api-client/issues/260)) ([2202cc9](https://github.com/skateresults/api-client/commit/2202cc945b6f931b8761d011f4d793d4587396af))
+
 # [1.4.0](https://github.com/skateresults/api-client/compare/v1.3.1...v1.4.0) (2024-08-04)
 
 
