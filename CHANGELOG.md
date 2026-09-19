@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/skateresults/api-client/compare/v1.5.1...v1.5.2) (2026-09-19)
+
+
+### Bug Fixes
+
+* **types:** update round list response schema ([#274](https://github.com/skateresults/api-client/issues/274)) ([2c4abc8](https://github.com/skateresults/api-client/commit/2c4abc8c8007440d24557af83b84a9c3c9eba605))
+
 ## [1.5.1](https://github.com/skateresults/api-client/compare/v1.5.0...v1.5.1) (2026-09-19)
 
 
