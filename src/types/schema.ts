@@ -629,13 +629,13 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description An array of rounds */
+      /** @description A list of rounds with the total count */
       200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["Round"];
+          "application/json": components["schemas"]["RoundList"];
         };
       };
       /** @description Competition, age group or event not found */

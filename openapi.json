@@ -355,11 +355,11 @@
         ],
         "responses": {
           "200": {
-            "description": "An array of rounds",
+            "description": "A list of rounds with the total count",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Round"
+                  "$ref": "#/components/schemas/RoundList"
                 }
               }
             }
