@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/skateresults/api-client/compare/v1.5.0...v1.5.1) (2026-09-19)
+
+
+### Bug Fixes
+
+* **client:** correct race routes and types ([#272](https://github.com/skateresults/api-client/issues/272)) ([d3de926](https://github.com/skateresults/api-client/commit/d3de92679c9e542c3bd2e71996391011153ee186))
+
 # [1.5.0](https://github.com/skateresults/api-client/compare/v1.4.0...v1.5.0) (2026-09-17)
 
 
