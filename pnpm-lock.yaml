@@ -21,6 +21,9 @@ importers:
       '@tsconfig/recommended':
         specifier: 1.0.13
         version: 1.0.13
+      '@types/node':
+        specifier: 18.19.0
+        version: 18.19.0
       '@typescript-eslint/eslint-plugin':
         specifier: 8.0.0
         version: 8.0.0(@typescript-eslint/parser@8.0.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
@@ -249,6 +252,9 @@ packages:
 
   '@tsconfig/recommended@1.0.13':
     resolution: {integrity: sha512-sySRuBfMKyKO/j2ZAhR8kSembhjuPEV4Ra3AHtmWLq51+iGaudr45crPSzNC5b7/Ctrh9dfUpBuTlYrH6rM58Q==}
+
+  '@types/node@18.19.0':
+    resolution: {integrity: sha512-667KNhaD7U29mT5wf+TZUnrzPrlL2GNQ5N0BMjO2oNULhBxX0/FKCkm6JMu0Jh7Z+1LwUlR21ekd7KhIboNFNw==}
 
   '@types/normalize-package-data@2.4.2':
     resolution: {integrity: sha512-lqa4UEhhv/2sjjIQgjX8B+RBjj47eo0mzGasklVJ78UKGQY1r0VpB9XHDaZZO9qzEFDdy4MrXLuEaSmPrPSe/A==}
@@ -1652,6 +1658,9 @@ packages:
     engines: {node: '>=0.8.0'}
     hasBin: true
 
+  undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+
   unicode-emoji-modifier-base@1.0.0:
     resolution: {integrity: sha512-yLSH4py7oFH3oG/9K+XWrz1pSi3dfUrWEnInbxMfArOfc1+33BlGPQtLsOYwvdMy11AwUBetYuaRxSPqgkq+8g==}
     engines: {node: '>=4'}
@@ -2003,6 +2012,10 @@ snapshots:
   '@sindresorhus/is@3.1.2': {}
 
   '@tsconfig/recommended@1.0.13': {}
+
+  '@types/node@18.19.0':
+    dependencies:
+      undici-types: 5.26.5
 
   '@types/normalize-package-data@2.4.2': {}
 
@@ -3313,6 +3326,8 @@ snapshots:
 
   uglify-js@3.17.4:
     optional: true
+
+  undici-types@5.26.5: {}
 
   unicode-emoji-modifier-base@1.0.0: {}
 
