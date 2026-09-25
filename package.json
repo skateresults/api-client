@@ -39,8 +39,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "6.0.3",
-    "@semantic-release/git": "10.0.1",
+    "@semantic-release/changelog": "7.0.0",
+    "@semantic-release/git": "11.0.1",
     "@tsconfig/recommended": "1.0.13",
     "@typescript-eslint/eslint-plugin": "8.0.0",
     "@typescript-eslint/parser": "8.0.0",
@@ -50,7 +50,7 @@
     "husky": "9.1.7",
     "openapi-typescript": "7.13.0",
     "prettier": "3.9.7",
-    "semantic-release": "22.0.12",
+    "semantic-release": "25.0.9",
     "typescript": "5.9.3"
   },
   "dependencies": {
